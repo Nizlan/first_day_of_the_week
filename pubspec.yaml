@@ -1,5 +1,5 @@
 name: first_day_of_the_week
-description: "A new Flutter plugin project."
+description: "Flutter plugin for getting system's first day of the week."
 version: 0.0.1
 homepage:
 
