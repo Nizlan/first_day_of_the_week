@@ -7,23 +7,27 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockFirstDayOfTheWeekPlatform
     with MockPlatformInterfaceMixin
     implements FirstDayOfTheWeekPlatform {
-
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<int?> get() {
+    return Future<int?>.value(1);
+  }
 }
 
 void main() {
-  final FirstDayOfTheWeekPlatform initialPlatform = FirstDayOfTheWeekPlatform.instance;
+  final FirstDayOfTheWeekPlatform initialPlatform =
+      FirstDayOfTheWeekPlatform.instance;
 
   test('$MethodChannelFirstDayOfTheWeek is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelFirstDayOfTheWeek>());
   });
 
-  test('getPlatformVersion', () async {
-    FirstDayOfTheWeek firstDayOfTheWeekPlugin = FirstDayOfTheWeek();
-    MockFirstDayOfTheWeekPlatform fakePlatform = MockFirstDayOfTheWeekPlatform();
+  test('get first day of week', () async {
+    MockFirstDayOfTheWeekPlatform fakePlatform =
+        MockFirstDayOfTheWeekPlatform();
     FirstDayOfTheWeekPlatform.instance = fakePlatform;
 
-    expect(await firstDayOfTheWeekPlugin.getPlatformVersion(), '42');
+    await FirstDayOfTheWeek.init();
+
+    expect(FirstDayOfTheWeek.value, 1);
   });
 }
