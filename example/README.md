@@ -1,16 +1,100 @@
-# first_day_of_the_week_example
 
-Demonstrates how to use the first_day_of_the_week plugin.
+# first_day_of_the_week
 
-## Getting Started
+`first_day_of_the_week` is a Flutter plugin that allows you to retrieve the system's first day of the week on both Android and iOS. This can be particularly useful for calendar and scheduling applications.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Get the system's first day of the week.
+- Supports both Android and iOS platforms.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Add `first_day_of_the_week` to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  first_day_of_the_week: ^1.0.0
+```
+
+Then run:
+
+```bash
+flutter pub get
+```
+
+## Usage
+
+First, ensure you initialize the plugin by calling the `init` method. This will retrieve and set the first day of the week from the system.
+
+```dart
+import 'package:first_day_of_the_week/first_day_of_the_week.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize the plugin to get the first day of the week
+  await FirstDayOfTheWeek.init();
+
+  // Access the first day of the week
+  int? firstDay = FirstDayOfTheWeek.value;
+  print("The first day of the week is: $firstDay");
+
+  runApp(MyApp());
+}
+```
+
+### Day of the Week Mapping
+
+The days of the week are represented as follows:
+
+- 1 - Sunday
+- 2 - Monday
+- 3 - Tuesday
+- 4 - Wednesday
+- 5 - Thursday
+- 6 - Friday
+- 7 - Saturday
+
+## Example
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:first_day_of_the_week/first_day_of_the_week.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize the plugin to get the first day of the week
+  await FirstDayOfTheWeek.init();
+
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('First Day of the Week Example'),
+        ),
+        body: Center(
+          child: Text(
+            'The first day of the week is: ${FirstDayOfTheWeek.value}',
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
