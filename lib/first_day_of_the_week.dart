@@ -1,13 +1,6 @@
 import 'first_day_of_the_week_platform_interface.dart';
 
 class FirstDayOfTheWeek {
-  FirstDayOfTheWeek._privateConstructor();
-
-  static final FirstDayOfTheWeek _instance =
-      FirstDayOfTheWeek._privateConstructor();
-
-  static FirstDayOfTheWeek get instance => _instance;
-
   /// 1 - Sunday,
   /// 2 - Monday,
   /// 3 - Tuesday,
